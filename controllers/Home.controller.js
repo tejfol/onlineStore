@@ -2,8 +2,8 @@ const { User, Items } = require("../models");
 
 module.exports = {
     get: async (req, res) => {
-        const allUsers = await Items.findAll();
-        res.status(200).render("pages/index");
+        const allItems = await Items.findAll();
+        res.status(200).render("pages/index", { allItems: allItems });
     },
     post: async (req, res) => {
         try {
@@ -14,7 +14,12 @@ module.exports = {
                 price,
             });
             console.log(addItem.id);
-            res.render("pages/index");
-        } catch (error) {}
+            const allItems = await Items.findAll();
+            res.render("pages/index", { allItems: allItems });
+        } catch (error) {
+            console.log(error);
+            res.render("pages/index", {errorMessage: "Something went wrong."});
+        }
+        
     },
 };

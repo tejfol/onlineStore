@@ -3,6 +3,25 @@
 
 <head>
     <%- include('../partials/head'); %>
+        <style>
+            table {
+                font-family: arial, sans-serif;
+                border-collapse: collapse;
+                width: 100%;
+                margin-top: 20px;
+            }
+
+            td,
+            th {
+                border: 1px solid #dddddd;
+                text-align: left;
+                padding: 8px;
+            }
+
+            tr:nth-child(even) {
+                background-color: #dddddd;
+            }
+        </style>
 </head>
 
 <body class="container">
@@ -15,7 +34,16 @@
         <div class="jumbotron">
             <h1>Online Store</h1>
             <%- include('../partials/addItem') %>
-
+                <table>
+                    <tr>
+                        <th>Name</th>
+                        <th>Description</th>
+                        <th>Price</th>
+                    </tr>
+                    <% allItems.forEach(element=> {%>
+                        <%- include('../partials/item', {element: element}) %>
+                            <%});%>
+                </table>
         </div>
     </main>
 
