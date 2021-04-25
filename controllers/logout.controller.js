@@ -1,0 +1,6 @@
+module.exports = {
+    get: (req, res) => {
+        req.session = null;
+        res.redirect("/");
+    },
+};

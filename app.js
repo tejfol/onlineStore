@@ -11,6 +11,7 @@ const app = express();
 const homeRouter = require("./routes/Home");
 const signinRouter = require("./routes/SignIn");
 const signupRouter = require("./routes/SignUp");
+const logoutRouter = require("./routes/Logout");
 
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
@@ -31,6 +32,7 @@ const db = require("./models");
 app.use("/", homeRouter);
 app.use("/signin", signinRouter);
 app.use("/signup", signupRouter);
+app.use("/logout", logoutRouter);
 
 db.sequelize.sync().then((req) => {
     app.listen(port, () => {

@@ -1,24 +1,25 @@
 <div class="col-sm-8 col-sm-offset-2">
     <div class="jumbotron text-center">
-        <h1><span class="fa fa-sign-in"></span> Sign Up</h1>
-        <form action="/signup" method="post">
-            <div class="form-group">
-                <input type="text" class="form-control" name="username" placeholder="Username" required>
-            </div>
-            <div class="form-group">
-                <input type="email" class="form-control" name="email" placeholder="E-mail" required>
-            </div>
-            <div class="form-group">
-                <input type="password" class="form-control" name="password" placeholder="Password" required />
-            </div>
-            <div class="form-group">
-                <input type="password" class="form-control" name="passwordrepeat" placeholder="password-repeat"
-                    required />
-            </div>
-            <div>
-                <input type="submit" class="form-control" value="Submit" />
-            </div>
-        </form>
+        <%- message %>
+            <h1><span class="fa fa-sign-in"></span> Sign Up</h1>
+            <form action="/signup" method="post">
+                <div class="form-group">
+                    <input type="text" class="form-control" name="username" placeholder="Username" required>
+                </div>
+                <div class="form-group">
+                    <input type="email" class="form-control" name="email" placeholder="E-mail" required>
+                </div>
+                <div class="form-group">
+                    <input type="password" class="form-control" name="password" placeholder="Password" required />
+                </div>
+                <div class="form-group">
+                    <input type="password" class="form-control" name="passwordrepeat" placeholder="Password-repeat"
+                        required />
+                </div>
+                <div>
+                    <input type="submit" class="form-control" value="Submit" />
+                </div>
+            </form>
     </div>
     <hr>
     <span class="fa fa-sign-in"> Already have an account?<a href="/signin"> Login</a></span>
