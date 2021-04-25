@@ -40,9 +40,14 @@
                         <th>Description</th>
                         <th>Price</th>
                     </tr>
-                    <% allItems.forEach(element=> {%>
-                        <%- include('../partials/item', {element: element}) %>
-                    <%});%>
+                    <% if( allItems.length > 0){ %> 
+                        <% allItems.forEach(element=> {%>
+                            <%- include('../partials/item', {element: element}) %>
+                        <%});%>
+                    <% }else { %>
+                        <br>
+                        <h2>No items included.</h2>
+                    <% } %> 
                 </table>
         </div>
     </main>
