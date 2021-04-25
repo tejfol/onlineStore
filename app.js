@@ -2,6 +2,7 @@ const express = require("express");
 
 const path = require("path");
 const bodyParser = require("body-parser");
+const session = require("express-session");
 
 const port = process.env.PORT;
 
@@ -13,6 +14,14 @@ const signupRouter = require("./routes/SignUp");
 
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
+
+app.use(
+    session({
+        secret: "reallySecretToken",
+        resave: true,
+        saveUninitialized: true,
+    })
+);
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
