@@ -1,5 +1,6 @@
 const { User } = require("../models");
 const bcrypt = require("bcrypt");
+const jwt = require("jsonwebtoken");
 
 module.exports = {
     get: (req, res) => {
@@ -21,8 +22,22 @@ module.exports = {
                     );
                     console.log(password, findEmail.password);
                     if (match) {
-                        return res.render("pages/signIn", {
+                        const { username, id } = findEmail;
+                        console.log(username, id);
+                        const token = jwt.sign(
+                            { name: username, id: id },
+                            process.env.TOKEN_SECRET
+                        );
+
+                        res.cookie("token", token, {
+                            maxAge: 86_400_000,
+                            httpOnly: true,
+                        }).render("pages/signIn", {
                             message: "Logged in.",
+                        });
+                    } else {
+                        return res.render("pages/signIn", {
+                            message: "Wrong password.",
                         });
                     }
                 } else {

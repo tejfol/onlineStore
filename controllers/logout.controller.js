@@ -1,6 +1,7 @@
 module.exports = {
     get: (req, res) => {
-        req.session = null;
+        res.clearCookie("token");
+        res.session = null;
         res.redirect("/");
     },
 };

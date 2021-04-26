@@ -3,6 +3,8 @@ const express = require("express");
 const path = require("path");
 const bodyParser = require("body-parser");
 const session = require("express-session");
+const cookieParser = require("cookie-parser");
+const cors = require("cors");
 
 const port = process.env.PORT;
 
@@ -16,14 +18,22 @@ const logoutRouter = require("./routes/Logout");
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 
+const corsOptions = {
+    origin: "*",
+    optionsSuccessStatus: 200,
+};
+app.use(cors(corsOptions));
+
 app.use(
     session({
         secret: "reallySecretToken",
-        resave: true,
+        resave: false,
         saveUninitialized: true,
+        cookie: { secure: true },
     })
 );
 
+app.use(cookieParser());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
