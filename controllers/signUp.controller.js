@@ -3,7 +3,7 @@ const { User } = require("../models");
 
 module.exports = {
     get: (req, res) => {
-        res.render("pages/signUp", { message: "" });
+        res.render("pages/signUp", { message: "", messageClass: "" });
     },
     post: async (req, res) => {
         try {
@@ -13,6 +13,7 @@ module.exports = {
             if (password != passwordrepeat) {
                 return res.render("pages/signUp", {
                     message: "Password does not match.",
+                    messageClass: "alert-danger",
                 });
             }
 
@@ -33,12 +34,13 @@ module.exports = {
             });
             return res.render("pages/signUp", {
                 message: "Registered successfully",
-                messageClass: "alert-danger",
+                messageClass: "alert-success",
             });
         } catch (e) {
             console.log(e);
             return res.render("pages/signUp", {
-                message: "",
+                message: "Something went wrong.",
+                messageClass: "alert-danger",
             });
         }
     },

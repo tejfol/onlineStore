@@ -1,10 +1,11 @@
 const express = require("express");
-
+require("dotenv").config();
 const path = require("path");
 const bodyParser = require("body-parser");
 const session = require("express-session");
 const cookieParser = require("cookie-parser");
 const cors = require("cors");
+const db = require("./models");
 
 const port = process.env.PORT;
 
@@ -17,6 +18,10 @@ const logoutRouter = require("./routes/Logout");
 
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
+
+app.use(cookieParser());
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 
 const corsOptions = {
     origin: "*",
@@ -32,12 +37,6 @@ app.use(
         cookie: { secure: true },
     })
 );
-
-app.use(cookieParser());
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
-
-const db = require("./models");
 
 app.use("/", homeRouter);
 app.use("/signin", signinRouter);

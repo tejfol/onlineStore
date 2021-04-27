@@ -2,6 +2,9 @@ module.exports = {
     get: (req, res) => {
         res.clearCookie("token");
         res.session = null;
-        res.redirect("/");
+        res.render("pages/signin", {
+            message: "Logged out.",
+            messageClass: "alert-danger",
+        });
     },
 };
