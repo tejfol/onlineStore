@@ -4,8 +4,9 @@ const verifyToken = async (req, res, next) => {
     const token = req.cookies.token || "";
     try {
         if (!token) {
-            res.status(200).render("pages/signin", {
+            return res.status(200).render("pages/signin", {
                 message: "Login first to add items.",
+                messageClass: "alert-danger",
             });
         }
         const decrypt = await jwt.verify(token, process.env.TOKEN_SECRET);
@@ -15,7 +16,10 @@ const verifyToken = async (req, res, next) => {
         };
         next();
     } catch (err) {
-        return res.status(500).json(err.toString());
+        return res.status(200).render("pages/signin", {
+            message: "Login first to make changes",
+            messageClass: "alert-danger",
+        });
     }
 };
 

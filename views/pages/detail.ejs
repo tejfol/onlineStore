@@ -33,16 +33,9 @@
 
     <main>
         <div class="jumbotron">
-            <h1 class="text-center">Online Store</h1>
-            <%- include('../partials/Items/addItem') %>
-                <% if( allItems.length> 0){ %>
-                    <% allItems.forEach(Item=> {%>
-                        <%- include('../partials/Items/itemContainer', {Item: Item}) %>
-                            <%});%>
-                                <% }else { %>
-                                    <br>
-                                    <h2>No items included.</h2>
-                                    <% } %>
+            <p>
+                <%- Item.name %>
+            </p>
         </div>
     </main>
 
