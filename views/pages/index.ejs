@@ -35,14 +35,20 @@
         <div class="jumbotron">
             <h1 class="text-center">Online Store</h1>
             <%- include('../partials/Items/addItem') %>
-                <% if( allItems.length> 0){ %>
-                    <% allItems.forEach(Item=> {%>
-                        <%- include('../partials/Items/itemContainer', {Item: Item}) %>
-                            <%});%>
-                                <% }else { %>
-                                    <br>
-                                    <h2>No items included.</h2>
-                                    <% } %>
+                <div class="container">
+                    <div class="row">
+                        <% if( allItems.length> 0){ %>
+                            <% allItems.forEach(Item=> {%>
+                                <div class="col-md-4 col-sm-6 mt-4">
+                                    <%- include('../partials/Items/itemContainer', {Item: Item}) %>
+                                </div>
+                                <%});%>
+                                    <% }else { %>
+                                        <br>
+                                        <h2>No items included.</h2>
+                                        <% } %>
+                    </div>
+                </div>
         </div>
     </main>
 

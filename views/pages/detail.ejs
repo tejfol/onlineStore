@@ -33,9 +33,32 @@
 
     <main>
         <div class="jumbotron">
-            <p>
-                <%- Item.name %>
-            </p>
+
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm d-flex justify-content-center">
+                        <img class="img-thumbnail rounded" src="https://picsum.photos/200/150" alt="">
+                    </div>
+                    <div class="col-sm">
+                        <h1>
+                            <%- Item.name %>
+                        </h1>
+                        <p>
+                            <strong>Description:</strong>
+                            <%- Item.description %>
+                        </p>
+                        <p>
+                            <strong>$$$</strong>
+                            <%- Item.price %>
+                        </p>
+                        <p>
+                            <strong> Date added:</strong>
+                            <%- Item.createdAt.toDateString() %>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </main>
 

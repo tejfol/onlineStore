@@ -5,7 +5,7 @@ const verifyToken = async (req, res, next) => {
     try {
         if (!token) {
             return res.status(200).render("pages/signin", {
-                message: "Login first to add items.",
+                message: "Login first to make changes.",
                 messageClass: "alert-danger",
             });
         }
@@ -17,7 +17,7 @@ const verifyToken = async (req, res, next) => {
         next();
     } catch (err) {
         return res.status(200).render("pages/signin", {
-            message: "Login first to make changes",
+            message: "Login first to make changes.",
             messageClass: "alert-danger",
         });
     }
