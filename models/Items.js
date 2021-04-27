@@ -1,4 +1,3 @@
-"use strict";
 module.exports = (sequelize, DataTypes) => {
     const Items = sequelize.define("Items", {
         name: {
@@ -9,11 +8,11 @@ module.exports = (sequelize, DataTypes) => {
             },
         },
         description: {
-            type: DataTypes.STRING,
+            type: DataTypes.TEXT,
             allowNull: true,
         },
         price: {
-            type: DataTypes.STRING,
+            type: DataTypes.INTEGER,
             allowNull: false,
             validate: {
                 notEmpty: true,

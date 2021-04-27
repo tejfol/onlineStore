@@ -33,23 +33,22 @@
 
     <main>
         <div class="jumbotron">
-                    <h1>Online Store</h1>
-                    <%- include('../partials/addItem') %>
-                        <table>
-                            <tr>
-                                <th>Name</th>
-                                <th>Description</th>
-                                <th>Price</th>
-                            </tr>
-                            <% if( allItems.length> 0){ %>
-                                <% allItems.forEach(element=> {%>
-                                    <%- include('../partials/item', {element: element}) %>
-                                        <%});%>
-                                            <% }else { %>
-                                                <br>
-                                                <h2>No items included.</h2>
-                                                <% } %>
-                        </table>
+            <h1 class="text-center">Online Store</h1>
+            <div class="container">
+                <%- include('../partials/Filter/filterItems') %>
+                <div class="row ">
+                        <% if( allItems.length> 0){ %>
+                            <% allItems.forEach(Item=> {%>
+                                <div class="col-md-6 col-sm-6 col-lg-4 mt-4">
+                                    <%- include('../partials/Items/itemContainer', {Item: Item}) %>
+                                </div>
+                                <%});%>
+                                    <% }else { %>
+                                        <br>
+                                        <h2>No items included.</h2>
+                                        <% } %>
+                    </div>
+                </div>
         </div>
     </main>
 

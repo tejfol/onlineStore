@@ -1,26 +1,41 @@
-const { User, Items } = require("../models");
+const { Items } = require("../models");
 
 module.exports = {
     get: async (req, res) => {
-        const allItems = await Items.findAll();
+        const allItems = await Items.findAll({
+            order: [["createdAt", "DESC"]],
+        });
         return res.status(200).render("pages/index", { allItems: allItems });
     },
-    post: async (req, res) => {
-        try {
-            const { name, description, price } = req.body;
-            const addItem = await Items.create({
-                name,
-                description,
-                price,
-            });
-            console.log(addItem.id);
-            const allItems = await Items.findAll();
-            return res.render("pages/index", { allItems: allItems });
-        } catch (error) {
-            console.log(error);
-            return res.render("pages/index", {
-                errorMessage: "Something went wrong.",
-            });
+    filter: async (req, res) => {
+        const { filter } = req.query;
+        switch (filter) {
+            case "newest":
+                const filteredItems = await Items.findAll({
+                    order: [["createdAt", "DESC"]],
+                });
+                console.log(filteredItems);
+                return res
+                    .status(200)
+                    .render("pages/index", { allItems: filteredItems });
+            case "highest_price":
+                const filteredHighest = await Items.findAll({
+                    order: [["price", "DESC"]],
+                });
+                console.log(filteredHighest);
+                return res
+                    .status(200)
+                    .render("pages/index", { allItems: filteredHighest });
+            case "lowest_price":
+                const filteredLowest = await Items.findAll({
+                    order: [["price", "ASC"]],
+                });
+                console.log(filteredLowest);
+                return res
+                    .status(200)
+                    .render("pages/index", { allItems: filteredLowest });
+            default:
+                return res.send("Error");
         }
     },
 };

@@ -1,9 +1,8 @@
 const express = require("express");
 const router = express.Router();
-const homeController = require("../controllers/Home.controller.js");
-const verifyToken = require("../middleware/login.middleware");
+const { get, filter } = require("../controllers/Home.controller.js");
 
-router.get("/", homeController.get);
-router.post("/", verifyToken, homeController.post);
+router.get("/", get);
+router.get("/filter", filter);
 
 module.exports = router;

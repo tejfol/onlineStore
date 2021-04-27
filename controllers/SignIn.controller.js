@@ -4,7 +4,7 @@ const jwt = require("jsonwebtoken");
 
 module.exports = {
     get: (req, res) => {
-        res.render("pages/signIn", { message: "" });
+        res.render("pages/signIn", { message: "", messageClass: "" });
     },
     post: async (req, res) => {
         try {
@@ -28,27 +28,30 @@ module.exports = {
                             { name: username, id: id },
                             process.env.TOKEN_SECRET
                         );
-
+                        const expiryDate = new Date(
+                            Date.now() + 60 * 60 * 1000
+                        ); // 1 hour
                         res.cookie("token", token, {
-                            maxAge: 86_400_000,
+                            maxAge: expiryDate,
                             httpOnly: true,
                         }).render("pages/signIn", {
                             message: "Logged in.",
+                            messageClass: "alert-success",
                         });
                     } else {
                         return res.render("pages/signIn", {
-                            message: "Wrong password.",
+                            message: "Wrong password.", messageClass: "alert-danger" 
                         });
                     }
                 } else {
                     return res.status(500).render("pages/signIn", {
-                        message: "Email not found.",
+                        message: "Email not found.",messageClass: "alert-danger"
                     });
                 }
             }
         } catch (e) {
             console.log(e);
-            res.render("pages/signIn", { message: "Wrong password or email." });
+            res.render("pages/signIn", { message: "Wrong password or email.", messageClass: "alert-danger" });
         }
     },
 };
