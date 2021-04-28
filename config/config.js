@@ -11,14 +11,14 @@ module.exports = {
     "test": {
         "username": DB_USERNAME,
         "password": DB_PASSWORD,
-        "database": "sequelize_database_test",
+        "database": DATABASE,
         "host": DB_HOST,
         "dialect": "postgres",
     },
     "production": {
         "username": DB_USERNAME,
         "password": DB_PASSWORD,
-        "database": "sequelize_database_production",
+        "database": DATABASE,
         "host": DB_HOST,
         "dialect": "postgres",
     },
