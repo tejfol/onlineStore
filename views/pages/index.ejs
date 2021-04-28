@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('../partials/head'); %>
+        <style>
+            table {
+                font-family: arial, sans-serif;
+                border-collapse: collapse;
+                width: 100%;
+                margin-top: 20px;
+            }
+
+            td,
+            th {
+                border: 1px solid #dddddd;
+                text-align: left;
+                padding: 8px;
+            }
+
+            tr:nth-child(even) {
+                background-color: #dddddd;
+            }
+        </style>
+
+</head>
+
+<body class="container">
+
+    <header>
+        <%- include('../partials/header'); %>
+    </header>
+
+    <main>
+        <div class="jumbotron">
+            <h1 class="text-center">Online Store</h1>
+            <div class="container">
+                <%- include('../partials/Filter/filterItems') %>
+                <div class="row ">
+                        <% if( allItems.length> 0){ %>
+                            <% allItems.forEach(Item=> {%>
+                                <div class="col-md-6 col-sm-6 col-lg-4 mt-4">
+                                    <%- include('../partials/Items/itemContainer', {Item: Item}) %>
+                                </div>
+                                <%});%>
+                                    <% }else { %>
+                                        <br>
+                                        <h2>No items included.</h2>
+                                        <% } %>
+                    </div>
+                </div>
+        </div>
+    </main>
+
+    <footer>
+        <%- include('../partials/footer'); %>
+    </footer>
+
+</body>
+
+</html>
