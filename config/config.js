@@ -1,10 +1,10 @@
-const { DB_HOST, DB_USERNAME, DB_PASSWORD } = process.env;
+const { DB_HOST, DB_USERNAME, DB_PASSWORD, DATABASE } = process.env;
 
 module.exports = {
     "development": {
         "username": DB_USERNAME,
         "password": DB_PASSWORD,
-        "database": "online_store",
+        "database": DATABASE,
         "host": DB_HOST,
         "dialect": "postgres",
     },
