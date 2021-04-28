@@ -36,10 +36,10 @@
             <h1 class="text-center">Online Store</h1>
             <div class="container">
                 <%- include('../partials/Filter/filterItems') %>
-                <div class="row">
+                <div class="row ">
                         <% if( allItems.length> 0){ %>
                             <% allItems.forEach(Item=> {%>
-                                <div class="col-md-4 col-sm-6 mt-4">
+                                <div class="col-md-6 col-sm-6 col-lg-4 mt-4">
                                     <%- include('../partials/Items/itemContainer', {Item: Item}) %>
                                 </div>
                                 <%});%>
