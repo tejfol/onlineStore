@@ -6,7 +6,7 @@ const cookieParser = require("cookie-parser");
 const cors = require("cors");
 const db = require("./models");
 
-const port = process.env.PORT;
+const port = process.env.PORT || 3000;
 
 const app = express();
 

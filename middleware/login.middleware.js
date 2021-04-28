@@ -4,7 +4,7 @@ const verifyToken = async (req, res, next) => {
     const token = req.cookies.token || "";
     try {
         if (!token) {
-            return res.status(200).render("pages/signin", {
+            return res.status(200).render("pages/signIn", {
                 message: "Login first to make changes.",
                 messageClass: "alert-danger",
             });
@@ -16,7 +16,7 @@ const verifyToken = async (req, res, next) => {
         };
         next();
     } catch (err) {
-        return res.status(200).render("pages/signin", {
+        return res.status(200).render("pages/signIn", {
             message: "Login first to make changes.",
             messageClass: "alert-danger",
         });
