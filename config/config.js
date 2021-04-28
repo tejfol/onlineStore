@@ -20,6 +20,15 @@ module.exports = {
         "password": DB_PASSWORD,
         "database": DATABASE,
         "host": DB_HOST,
+        "native": true,
+        "ssl": false,
         "dialect": "postgres",
+        "dialectOptions": {
+            "ssl": {
+              "require": true,
+              "rejectUnauthorized": false 
+            }
+          },
+        
     },
 };
