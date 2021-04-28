@@ -8,7 +8,9 @@
             <%- Item.description%>
         </p>
         <p class="card-text">
-            <%- Item.price %>
+            <span>Price: </span>
+            <%- Number(Item.price).toLocaleString('ua-UA') %>
+            <span>₴</span>
         </p>
         <a href="detail/<%- Item.id %>" class="btn btn-outline-info">Detail</a>
         <a href="detail/<%- Item.id %>/delete" class="btn btn-outline-danger">Delete</a>

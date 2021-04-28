@@ -48,7 +48,9 @@
                             <%- Item.description %>
                         </p>
                         <p>
-                            <%- Item.price %>
+                            <strong>Price: </strong>
+                            <%- Number(Item.price).toLocaleString('ua-UA') %>
+                                <span>₴</span>
                         </p>
                         <p>
                             <strong> Date added:</strong>

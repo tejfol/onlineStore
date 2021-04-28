@@ -7,7 +7,4 @@ module.exports = {
         });
         return res.status(200).render("pages/index", { allItems: allItems });
     },
-    post: async (req, res) => {
-        res.send("ok");
-    },
 };

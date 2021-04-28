@@ -1,12 +1,5 @@
 const { Items } = require("../models");
 
-
-const formatter = new Intl.NumberFormat("ua-UA", {
-    style: "currency",
-    currency: "UAH",
-    minimumFractionDigits: 2,
-});
-
 module.exports = {
     get: (req, res) => {
         res.render("pages/AddItem");
@@ -17,7 +10,7 @@ module.exports = {
             const Item = await Items.create({
                 name,
                 description,
-                price: formatter.format(price)
+                price: price
             });
             const allItems = await Items.findAll({
                 order: [["updatedAt", "DESC"]],
