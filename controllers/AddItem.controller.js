@@ -2,7 +2,7 @@ const { Items } = require("../models");
 
 module.exports = {
     get: (req, res) => {
-        res.render("pages/AddItem");
+        res.render("pages/additem");
     },
     post: async (req, res) => {
         try {
@@ -10,12 +10,12 @@ module.exports = {
             const Item = await Items.create({
                 name,
                 description,
-                price: price
+                price: price,
             });
             const allItems = await Items.findAll({
                 order: [["updatedAt", "DESC"]],
             });
-            return res.render("pages/index", { allItems: allItems});
+            return res.render("pages/index", { allItems: allItems });
         } catch (error) {
             console.log(error);
             return res.render("pages/index", {
