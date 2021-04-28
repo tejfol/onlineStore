@@ -16,6 +16,7 @@ const signupRouter = require("./routes/SignUp");
 const logoutRouter = require("./routes/Logout");
 const detailRouter = require("./routes/Detail");
 const additemRouter = require("./routes/AddItem");
+const searchRouter = require("./routes/Search");
 
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
@@ -30,14 +31,13 @@ const corsOptions = {
 };
 app.use(cors(corsOptions));
 
-
-
 app.use("/", homeRouter);
 app.use("/signin", signinRouter);
 app.use("/signup", signupRouter);
 app.use("/logout", logoutRouter);
 app.use("/detail", detailRouter);
 app.use("/additem", additemRouter);
+app.use("/search", searchRouter);
 
 db.sequelize.sync().then((req) => {
     app.listen(port, () => {
