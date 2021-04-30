@@ -7,4 +7,4 @@
 
 Demo on Heroku:
 
-[![Heroku](https://im3.ezgif.com/tmp/ezgif-3-941e28c65c5b.gif)](https://onlinestoretestove.herokuapp.com/)
+[![Heroku](https://imgur.com/a/rMT8EFJ)](https://onlinestoretestove.herokuapp.com/)
